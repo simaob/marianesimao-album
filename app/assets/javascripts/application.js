@@ -17,4 +17,13 @@
 //= require bootstrap/dist/js/bootstrap.min
 //= require holder.min
 //= require lightgallery/dist/js/lightgallery.min
+//= require lg-thumbnail/dist/lg-thumbnail.min
+//= require lg-fullscreen/dist/lg-fullscreen.min
 //= require_tree .
+//= require_self
+
+$(document).ready(function() {
+  $("#lightgallery").lightGallery({
+    selector: '.card'
+  });
+});
