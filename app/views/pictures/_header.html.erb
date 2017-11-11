@@ -6,7 +6,7 @@
     <h1 class="jumbotron-heading"><%= title %></h1>
     <p class="text-muted">
       Total de fotos no sistema: <%= Picture.count %><br />
-      Última foto adicionada: <%= Picture.last.image_file_name %>
+      Última foto adicionada: <%= Picture.last.try(:image_file_name) %>
     </p>
   </div>
 </section>
