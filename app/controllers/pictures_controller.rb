@@ -1,7 +1,7 @@
 class PicturesController < ApplicationController
 
   before_action :set_picture, only: [:edit, :update]
-  before_action :http_authentication
+  before_action :basic_http_auth
 
   def index
     @pictures = Picture.order(:created_at)
@@ -38,8 +38,8 @@ class PicturesController < ApplicationController
     @picture = Picture.find(params[:id])
   end
 
-  def http_authentication
-    #return if Rails.env == 'development'
+  def basic_http_auth
+    return if Rails.env == 'development'
     authenticate_or_request_with_http_basic do |username, password|
       username == ENV['USERNAME'] && password == ENV['PASSWORD']
     end
