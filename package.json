@@ -2,6 +2,9 @@
   "name": "marianaesimao-fotos",
   "private": true,
   "dependencies": {
+    "bootstrap": "^3.3.7",
+    "lg-fullscreen": "^1.0.1",
+    "lg-thumbnail": "^1.1.0",
     "lightgallery": "^1.6.4"
   }
 }

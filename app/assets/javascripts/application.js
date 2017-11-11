@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require popper.min
-//= require bootstrap.min
+//= require bootstrap/dist/js/bootstrap.min
 //= require holder.min
+//= require lightgallery/dist/js/lightgallery.min
 //= require_tree .
