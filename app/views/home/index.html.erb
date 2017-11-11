@@ -1,26 +1,28 @@
 <section class="jumbotron text-center">
   <div class="container">
-    <h1 class="jumbotron-heading">Album example</h1>
-    <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
-    <p>
-    <a href="#" class="btn btn-primary">Main call to action</a>
-    <a href="#" class="btn btn-secondary">Secondary action</a>
-    </p>
+    <h1 class="jumbotron-heading">Casamento Mariana e Simão</h1>
+    <p class="lead text-muted">Podem ver página a página ou pesquisar.</p>
+    <%= form_tag root_path, method: :get, class: "form-inline" do %>
+      <%= text_field_tag :query, params[:query],
+        class: "form-control col-md-8 mb-2 mr-sm-2 mb-sm-0",
+        placeholder: "Igreja, Copo de Água, Família..." %>
+      <%= submit_tag "Pesquisar", class: "btn btn-primary" %>
+    <% end %>
   </div>
 </section>
 
 <div class="album text-muted">
   <div class="container">
-    <div id="lightgallery" class="row">
-      <div class="card" data-src="003.jpg">
-        <img src="003.jpg" alt="Card image cap" width="280px">
+    <% if @pictures.any? %>
+      <div id="lightgallery" class="row">
+        <% @pictures.each do |picture| %>
+          <div class="card" data-src="<%= picture.image(:original) %>">
+            <img src="<%= picture.image(:medium) %>" alt="<%= [picture.title.presence, picture.description.presence].compact.join(" - ") %>" />
+          </div>
+        <% end %>
       </div>
-      <div class="card" data-src="004.jpg">
-        <img src="004.jpg" alt="Card image cap" width="280px">
-      </div>
-      <div class="card" data-src="005.jpg">
-        <img src="005.jpg" alt="Card image cap" width="280px">
-      </div>
-    </div>
+    <% else %>
+      <p class="text-muted">Não foram encontradas fotografias para a sua pesquisa.</p>
+    <% end %>
   </div>
 </div>

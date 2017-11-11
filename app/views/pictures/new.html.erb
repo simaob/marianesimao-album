@@ -1,0 +1,35 @@
+<section class="jumbotron text-center">
+  <div class="container">
+    <% flash.each do |name, msg| %>
+      <span class="alert"><%= msg %></span>
+    <% end %>
+    <h1 class="jumbotron-heading">Add more pictures</h1>
+    <p class="text-muted">
+      Total pictures in the system: <%= Picture.count %><br />
+      Last picture added: <%= Picture.last.image_file_name %>
+    </p>
+  </div>
+</section>
+<div class="container">
+  <%= form_for @picture, url: pictures_path, html: { multipart: true } do |f| %>
+    <fieldset>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <%= f.label :title %>
+          <%= f.text_field :title, class: "form-control" %>
+        </div>
+        <div class="form-group col-md-6">
+          <%= f.label :description %>
+          <%= f.text_field :description, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :image, class: "custom-file" do %>
+          <%= f.file_field :image, class: "custom-file-input" %>
+          <span class="custom-file-control"></span>
+        <% end %>
+      </div>
+    </fieldset>
+    <%= f.submit "Add Picture", class: "btn btn-primary" %>
+  <% end %>
+</div>
