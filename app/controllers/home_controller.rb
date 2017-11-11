@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @pictures = Picture.order(:created_at).limit(25)
+    @pictures = Picture.order(:created_at)
     if params[:query]
       @pictures = @pictures.where("title ilike ? OR description ilike ?",
                                   "%#{params[:query]}%", "%#{params[:query]}%")

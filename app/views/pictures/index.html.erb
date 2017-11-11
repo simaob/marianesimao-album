@@ -1,0 +1,12 @@
+<%= render 'header', title: "Todas as fotografias" %>
+<div class="container">
+  <ul>
+    <% @pictures.each do |p| %>
+      <li>
+        <%= [p.title.presence, p.description.presence].join("-") %>
+        <%= p.image_file_name %>
+        <%= link_to "Editar", edit_picture_path(p) %>
+      </li>
+    <% end %>
+  </ul>
+</div>

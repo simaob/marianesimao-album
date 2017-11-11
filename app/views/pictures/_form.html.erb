@@ -1,0 +1,28 @@
+<%= form_for picture, html: { multipart: true } do |f| %>
+  <fieldset>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <%= f.label :title, "Título" %>
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
+      <div class="form-group col-md-6">
+        <%= f.label :description, "Descrição" %>
+        <%= f.text_field :description, class: "form-control" %>
+      </div>
+    </div>
+    <% if @picture.new_record? %>
+      <div class="form-group">
+        <%= f.label :image, class: "custom-file" do %>
+          <%= f.file_field :image, class: "custom-file-input" %>
+          <span class="custom-file-control"></span>
+        <% end %>
+      </div>
+    <% else %>
+      <p>
+        <%= image_tag(@picture.image(:medium)) %>
+      </p>
+    <% end %>
+  </fieldset>
+  <%= f.submit "#{@picture.new_record? ? "Adicionar" : "Editar"} Fotografia",
+    class: "btn btn-primary" %>
+<% end %>
